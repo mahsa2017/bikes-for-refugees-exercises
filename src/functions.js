@@ -1,6 +1,7 @@
 function getTitle( document ) {
-  var element = document.getElementsByTagName('title')[0].innerHTML;
-  return element;
+  // get the title of the document and return it
+  ;
+  return document.getElementsByTagName("title")[0].innerHTML
 };
 
 function getNumberOfBikes( document ) {
@@ -9,6 +10,9 @@ function getNumberOfBikes( document ) {
 
   // hint: look up how to get text from inside an element
   // at https://developer.mozilla.org/en-US/docs/Web/API/Element
+
+  var n=window.document.getElementById('donation-count-alert')
+  return n.parseInt();
 };
 
 function getAllButtonText( document ) {
@@ -16,16 +20,22 @@ function getAllButtonText( document ) {
   
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection
   // also you may want to convert the HTMLCollection to an array
+  var bText= window.document.getElementsByClassName('btn')
+  return bText.toString();
 };
 
 function getNavLinksText( document ){
   // get the text content of all 'A' tags inside element with id 'navbarSupportedContent'
   // reuturn as an array of strings
+  var navBar=window.document.getElementById('navbarSupportedContent');
+  var res=navBar.window.document.getElementsByTagName('A').innerHTML
+  return res.toString();
 }
 
 function addDashesToLinks( document ){
   // surround the text in navigation bar links with '-'
   // no return needed
+
 }
 
 function italicTitles( document ){
