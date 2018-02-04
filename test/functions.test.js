@@ -5,25 +5,25 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const html = fs.readFileSync('index.html', 'utf8');
 
-test.skip('Title', () => {
+test('Title', () => {
   const { window } = new JSDOM( html );
   const title = functions.getTitle( window.document );
   expect( title ).toEqual( 'Bikes for Refugees | Scotland' );
 });
 
-test.skip('Number of bikes donated', () => {
+test('Number of bikes donated', () => {
   const { window } = new JSDOM( html );
   const numbers = functions.getNumberOfBikes( window.document );
   expect( numbers ).toEqual( 72 );
 });
 
-test.skip('Button text', () => {
+test('Button text', () => {
   const { window } = new JSDOM( html );
   const labels = functions.getAllButtonText( window.document );
   expect( labels ).toEqual(['Donate Now', 'Donate a bike today', 'Volunteer']);
 });
 
-test.skip('Button text', () => {
+test('getNavLinksText', () => {
   const { window } = new JSDOM( html );
   const labels = functions.getNavLinksText( window.document );
   expect( labels ).toEqual(['Home', 'About Us', 'News & Events', 'Contact Us', 'Donate Now']);
