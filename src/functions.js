@@ -1,19 +1,21 @@
 function getTitle( document ) {
   // get the title of the document and return it
   ;
-  return document.getElementsByTagName("title")[0].innerHTML
+  //return document.getElementsByTagName("title")[0].innerHTML
   //we also could give an id to title tag and then access it with id; 
+  return document.querySelector("title").innerHTML
 };
 
 function getNumberOfBikes( document ) {
   // get the number of bikes donated from the tag with id 'donation-count-alert'
   // convert it to an integer and return it
-
   // hint: look up how to get text from inside an element
   // at https://developer.mozilla.org/en-US/docs/Web/API/Element
+   var n = document.getElementById('donation-count-alert').innerHTML;
+  return parseInt(n); 
+  //return document.querySelector("donation-count-alert")[0];
 
-  var n = document.getElementById('donation-count-alert').innerHTML;
-  return parseInt(n);
+  // return Number(nOb)
 };
 
 function getAllButtonText( document ) {
@@ -59,22 +61,12 @@ function addDashesToLinks( document ){
 function italicTitles( document ){
   // convert links in 'Upcoming Events' section to italic using `<i>` tag
   // no return needed
-  /* var italic=document.getElementsByClassName(".articles")
-  for(var i=0; i< italic.length;i++)
-    {
-      italic.textContent= "<i>" + italic.textContent + "</i>";
-    }
-   */
-/*   const result = [];
-  var italy=document.querySelectorAll('.article-title a')
-  italy.forEach( l => 
-    result.push('<i>' +l.innerHTML+'</i>' )); */
+
     var italicLinks=document.querySelectorAll('.article-title a');
     italicLinks.forEach(function(item){
       item.innerHTML='<i>'+item.innerHTML+'</i>';
     })
     
-
   }
 function greenLinks( document ){
   // make `Learn more` links green
@@ -89,7 +81,36 @@ function addLink( document ){
   // Using `createElement` etc. create a new navbar item link 'Code Your Future' which links to
   // `https://codeyourfuture.io/`. It should have same structure as the other links
   // no return needed
+  /*  //have to ask it from someone ! 
+
+     //myWay
+    /* var li = document.createElement("li");
+    li.classList = 'nav-item';
+    
+    var link = document.createElement("a");
+    link.classList = 'nav-link';
+    link.innerHTML = "Code Your Future";
+    link.setAttribute("href", "https://codeyourfuture.io/");
+    li.appendChild(link);
+
+    var parent = document.getElementsByClassName("nav-item")[0].parentElement;
+    console.log(parent);
+    parent.appendChild(li); */
+
+    //Vik way
+    /* var li = document.createElement("li");
+    li.classList = 'nav-item';
+    var link = document.createElement("a");
+    link.classList = 'nav-link';
+    link.innerHTML = "Code Your Future";
+    link.setAttribute("href", "https://codeyourfuture.io/");
+    li.appendChild(link);
+    var parent = document.getElementsByClassName("nav-item");console.log(parent);
+    parent[parent.length - 1].appendChild(li); */
   
+ //mySmartWay
+var list=document.querySelector('.navbar-nav' )
+list.innerHTML += '<li class="nav-item"><a class="nav-link" href="https://codeyourfuture.io/">Code Your Future</a></li>';
 }
 
 module.exports = {
@@ -102,3 +123,21 @@ module.exports = {
   greenLinks,
   addLink
 };
+
+/* //this is an exercise belongs to syllabus week08 
+var myButton = document.querySelector(".buttons a");
+myButton.addEventListener("click", function addSomething(e) {
+    //console.log(e.textContent)
+	var d= document.getElementById("donation-count-alert")
+	d.innerHTML++;
+	console.log(e.target);
+  }) */
+  
+ /* // this is an exercise of syllabus week08
+  var link=document.querySelectorAll("a")
+link.forEach(function(e){
+	e.addEventListener("click",function(g){
+	 g.preventDefault();
+	console.log(g.clientX,g.clientY);   
+	})
+}) */
